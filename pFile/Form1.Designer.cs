@@ -42,6 +42,9 @@ namespace pFile
             this.panelOrientationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hElpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionV10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -80,9 +83,8 @@ namespace pFile
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.hElpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.versionV10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.performOperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -98,6 +100,7 @@ namespace pFile
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.viewToolStripMenuItem2,
             this.hElpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -170,7 +173,7 @@ namespace pFile
             this.panelOrientationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.panelOrientationToolStripMenuItem.Name = "panelOrientationToolStripMenuItem";
-            this.panelOrientationToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.panelOrientationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.panelOrientationToolStripMenuItem.Text = "Panel Orientation";
             // 
             // toolStripComboBox1
@@ -185,8 +188,30 @@ namespace pFile
             // 
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
+            // 
+            // hElpToolStripMenuItem
+            // 
+            this.hElpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.versionV10ToolStripMenuItem});
+            this.hElpToolStripMenuItem.Name = "hElpToolStripMenuItem";
+            this.hElpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.hElpToolStripMenuItem.Text = "HElp";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // versionV10ToolStripMenuItem
+            // 
+            this.versionV10ToolStripMenuItem.Name = "versionV10ToolStripMenuItem";
+            this.versionV10ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versionV10ToolStripMenuItem.Text = "Version v1.0";
             // 
             // splitContainer1
             // 
@@ -360,13 +385,13 @@ namespace pFile
             // Panel1Explorer
             // 
             this.Panel1Explorer.Name = "Panel1Explorer";
-            this.Panel1Explorer.Size = new System.Drawing.Size(164, 22);
+            this.Panel1Explorer.Size = new System.Drawing.Size(180, 22);
             this.Panel1Explorer.Text = "Open in Explorer";
             // 
             // Panel1Terminal
             // 
             this.Panel1Terminal.Name = "Panel1Terminal";
-            this.Panel1Terminal.Size = new System.Drawing.Size(164, 22);
+            this.Panel1Terminal.Size = new System.Drawing.Size(180, 22);
             this.Panel1Terminal.Text = "Open In Terminal";
             // 
             // Panel1Drives
@@ -530,13 +555,13 @@ namespace pFile
             // Panel2Explorer
             // 
             this.Panel2Explorer.Name = "Panel2Explorer";
-            this.Panel2Explorer.Size = new System.Drawing.Size(164, 22);
+            this.Panel2Explorer.Size = new System.Drawing.Size(180, 22);
             this.Panel2Explorer.Text = "Open in Explorer";
             // 
             // Panel2Terminal
             // 
             this.Panel2Terminal.Name = "Panel2Terminal";
-            this.Panel2Terminal.Size = new System.Drawing.Size(164, 22);
+            this.Panel2Terminal.Size = new System.Drawing.Size(180, 22);
             this.Panel2Terminal.Text = "Open in Terminal";
             // 
             // Panel2Drives
@@ -562,26 +587,20 @@ namespace pFile
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Title = "Open pFile Session...";
             // 
-            // hElpToolStripMenuItem
+            // editToolStripMenuItem
             // 
-            this.hElpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.versionV10ToolStripMenuItem});
-            this.hElpToolStripMenuItem.Name = "hElpToolStripMenuItem";
-            this.hElpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.hElpToolStripMenuItem.Text = "HElp";
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.performOperationToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
-            // aboutToolStripMenuItem
+            // performOperationToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // versionV10ToolStripMenuItem
-            // 
-            this.versionV10ToolStripMenuItem.Name = "versionV10ToolStripMenuItem";
-            this.versionV10ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.versionV10ToolStripMenuItem.Text = "Version v1.0";
+            this.performOperationToolStripMenuItem.Name = "performOperationToolStripMenuItem";
+            this.performOperationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.performOperationToolStripMenuItem.Text = "Perform Operation";
+            this.performOperationToolStripMenuItem.Click += new System.EventHandler(this.performOperationToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -670,6 +689,8 @@ namespace pFile
         private System.Windows.Forms.ToolStripMenuItem hElpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem versionV10ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem performOperationToolStripMenuItem;
     }
 }
 

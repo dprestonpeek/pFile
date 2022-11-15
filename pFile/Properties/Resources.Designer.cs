@@ -61,7 +61,9 @@ namespace pFile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to E:/RuinedKing/Unity
+        ///D:/RuinedKing/Unity
+        ///.
         /// </summary>
         internal static string pFileFavorites {
             get {

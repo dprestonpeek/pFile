@@ -84,12 +84,12 @@ namespace pFile
 
         private void Panel1User_Click(object sender, EventArgs e)
         {
-            webBrowser1.Url = new Uri("C:\\Users\\dpres");
+            webBrowser1.Url = new Uri("C:\\Users\\" + Environment.UserName);
         }
 
         private void Panel2User_Click(object sender, EventArgs e)
         {
-            webBrowser2.Url = new Uri("C:\\Users\\dpres");
+            webBrowser2.Url = new Uri("C:\\Users\\" + Environment.UserName);
         }
 
         private void Panel1Back_Click(object sender, EventArgs e)
@@ -150,13 +150,19 @@ namespace pFile
         private void Panel1Browse_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
-            webBrowser1.Url = new Uri(folderBrowserDialog1.SelectedPath);
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                webBrowser1.Url = new Uri(folderBrowserDialog1.SelectedPath);
+            }
         }
 
         private void Panel2Browse_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
-            webBrowser2.Url = new Uri(folderBrowserDialog1.SelectedPath);
+            if (folderBrowserDialog1.SelectedPath != "")
+            {
+                webBrowser2.Url = new Uri(folderBrowserDialog1.SelectedPath);
+            }
         }
 
         private void Panel1Go_Click(object sender, EventArgs e)
@@ -298,6 +304,18 @@ namespace pFile
             Panel1Favorites.DropDownItems.RemoveAt(index);
             Panel2Favorites.DropDownItems.RemoveAt(index);
             SetFavoritesButtonDisplayStyle();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.Show();
+        }
+
+        private void performOperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Operation operation = new Operation(Panel1Url.Text, Panel2Url.Text);
+            operation.Show();
         }
     }
 }
