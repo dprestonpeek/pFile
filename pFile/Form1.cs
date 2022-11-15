@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,11 @@ namespace pFile
     {
         string Url1 { get { return webBrowser1.Url.ToString().Substring(8); } set { Url1 = value; } }
         string Url2 { get { return webBrowser2.Url.ToString().Substring(8); } set { Url2 = value; } }
+
+        public ResourceManager ResManager { get; private set; }
+
         List<string> favorites;
-        string favoritesFile = "../../Resources/pFileFavorites.txt";
+        string favoritesFile = "../pFileFavorites.txt";
 
         public Form1()
         {
@@ -47,8 +51,15 @@ namespace pFile
 
         private void GetFavorites()
         {
+            favorites = new List<String>();
+            if (!File.Exists(favoritesFile))
+            {
+                File.Create(favoritesFile);
+                favorites.Add(Panel1Url.Text);
+                favorites.Add(Panel2Url.Text);
+                File.WriteAllLines(favoritesFile, favorites);
+            }
             favorites = File.ReadAllLines(favoritesFile).ToList();
-
             foreach (string fav in favorites)
             {
                 ToolStripItem newItem1 = Panel1Favorites.DropDownItems.Add(fav);
