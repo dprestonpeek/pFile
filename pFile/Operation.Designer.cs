@@ -29,7 +29,7 @@ namespace pFile
         /// </summary>
         private void InitializeComponent()
         {
-            this.CopyMoveDropDown = new System.Windows.Forms.ComboBox();
+            this.OperationTypeDropDown = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.FilesOnlyTop = new System.Windows.Forms.RadioButton();
             this.DestinationPane = new System.Windows.Forms.TrackBar();
@@ -38,6 +38,9 @@ namespace pFile
             this.FilesInSubdirectories = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Separator = new System.Windows.Forms.TextBox();
+            this.FolderPrefix = new System.Windows.Forms.CheckBox();
             this.JustEnumerate = new System.Windows.Forms.RadioButton();
             this.PrefixBox = new System.Windows.Forms.TextBox();
             this.PrefixFiles = new System.Windows.Forms.CheckBox();
@@ -50,9 +53,6 @@ namespace pFile
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.PerformOperation = new System.Windows.Forms.Button();
-            this.FolderPrefix = new System.Windows.Forms.CheckBox();
-            this.Separator = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestinationPane)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,24 +60,25 @@ namespace pFile
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CopyMoveDropDown
+            // OperationTypeDropDown
             // 
-            this.CopyMoveDropDown.DisplayMember = "0";
-            this.CopyMoveDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CopyMoveDropDown.FormattingEnabled = true;
-            this.CopyMoveDropDown.Items.AddRange(new object[] {
+            this.OperationTypeDropDown.DisplayMember = "0";
+            this.OperationTypeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OperationTypeDropDown.FormattingEnabled = true;
+            this.OperationTypeDropDown.Items.AddRange(new object[] {
             "Copy",
-            "Move"});
-            this.CopyMoveDropDown.Location = new System.Drawing.Point(70, 19);
-            this.CopyMoveDropDown.MaxDropDownItems = 2;
-            this.CopyMoveDropDown.Name = "CopyMoveDropDown";
-            this.CopyMoveDropDown.Size = new System.Drawing.Size(149, 21);
-            this.CopyMoveDropDown.TabIndex = 0;
-            this.CopyMoveDropDown.ValueMember = "0";
+            "Move",
+            "Rename"});
+            this.OperationTypeDropDown.Location = new System.Drawing.Point(70, 19);
+            this.OperationTypeDropDown.MaxDropDownItems = 2;
+            this.OperationTypeDropDown.Name = "OperationTypeDropDown";
+            this.OperationTypeDropDown.Size = new System.Drawing.Size(149, 21);
+            this.OperationTypeDropDown.TabIndex = 0;
+            this.OperationTypeDropDown.ValueMember = "0";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CopyMoveDropDown);
+            this.groupBox1.Controls.Add(this.OperationTypeDropDown);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(275, 58);
@@ -91,7 +92,7 @@ namespace pFile
             this.FilesOnlyTop.Location = new System.Drawing.Point(6, 19);
             this.FilesOnlyTop.Name = "FilesOnlyTop";
             this.FilesOnlyTop.Size = new System.Drawing.Size(139, 17);
-            this.FilesOnlyTop.TabIndex = 2;
+            this.FilesOnlyTop.TabIndex = 3;
             this.FilesOnlyTop.TabStop = true;
             this.FilesOnlyTop.Text = "Only files in top directory";
             this.FilesOnlyTop.UseVisualStyleBackColor = true;
@@ -102,7 +103,7 @@ namespace pFile
             this.DestinationPane.Maximum = 1;
             this.DestinationPane.Name = "DestinationPane";
             this.DestinationPane.Size = new System.Drawing.Size(222, 45);
-            this.DestinationPane.TabIndex = 3;
+            this.DestinationPane.TabIndex = 2;
             // 
             // label3
             // 
@@ -130,7 +131,7 @@ namespace pFile
             this.FilesInSubdirectories.Location = new System.Drawing.Point(6, 42);
             this.FilesInSubdirectories.Name = "FilesInSubdirectories";
             this.FilesInSubdirectories.Size = new System.Drawing.Size(138, 17);
-            this.FilesInSubdirectories.TabIndex = 8;
+            this.FilesInSubdirectories.TabIndex = 4;
             this.FilesInSubdirectories.TabStop = true;
             this.FilesInSubdirectories.Text = "Files in all subdirectories";
             this.FilesInSubdirectories.UseVisualStyleBackColor = true;
@@ -167,15 +168,43 @@ namespace pFile
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label6.Location = new System.Drawing.Point(177, 89);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "(Separator)";
+            // 
+            // Separator
+            // 
+            this.Separator.Location = new System.Drawing.Point(162, 69);
+            this.Separator.Name = "Separator";
+            this.Separator.Size = new System.Drawing.Size(90, 20);
+            this.Separator.TabIndex = 10;
+            this.Separator.TextChanged += new System.EventHandler(this.Separator_TextChanged);
+            // 
+            // FolderPrefix
+            // 
+            this.FolderPrefix.AutoSize = true;
+            this.FolderPrefix.Location = new System.Drawing.Point(6, 71);
+            this.FolderPrefix.Name = "FolderPrefix";
+            this.FolderPrefix.Size = new System.Drawing.Size(132, 17);
+            this.FolderPrefix.TabIndex = 9;
+            this.FolderPrefix.Text = "Prefix with folder name";
+            this.FolderPrefix.UseVisualStyleBackColor = true;
+            // 
             // JustEnumerate
             // 
             this.JustEnumerate.AutoSize = true;
             this.JustEnumerate.Location = new System.Drawing.Point(6, 158);
             this.JustEnumerate.Name = "JustEnumerate";
-            this.JustEnumerate.Size = new System.Drawing.Size(234, 17);
-            this.JustEnumerate.TabIndex = 19;
+            this.JustEnumerate.Size = new System.Drawing.Size(169, 17);
+            this.JustEnumerate.TabIndex = 13;
             this.JustEnumerate.TabStop = true;
-            this.JustEnumerate.Text = "Don\'t save original filenames, just enumerate";
+            this.JustEnumerate.Text = "Rename files with enumeration";
             this.JustEnumerate.UseVisualStyleBackColor = true;
             // 
             // PrefixBox
@@ -183,7 +212,7 @@ namespace pFile
             this.PrefixBox.Location = new System.Drawing.Point(162, 43);
             this.PrefixBox.Name = "PrefixBox";
             this.PrefixBox.Size = new System.Drawing.Size(90, 20);
-            this.PrefixBox.TabIndex = 18;
+            this.PrefixBox.TabIndex = 8;
             this.PrefixBox.TextChanged += new System.EventHandler(this.PrefixBox_TextChanged);
             // 
             // PrefixFiles
@@ -192,7 +221,7 @@ namespace pFile
             this.PrefixFiles.Location = new System.Drawing.Point(7, 46);
             this.PrefixFiles.Name = "PrefixFiles";
             this.PrefixFiles.Size = new System.Drawing.Size(86, 17);
-            this.PrefixFiles.TabIndex = 17;
+            this.PrefixFiles.TabIndex = 7;
             this.PrefixFiles.Text = "Prefix all files";
             this.PrefixFiles.UseVisualStyleBackColor = true;
             // 
@@ -202,7 +231,7 @@ namespace pFile
             this.SuffixDuplicates.Location = new System.Drawing.Point(6, 135);
             this.SuffixDuplicates.Name = "SuffixDuplicates";
             this.SuffixDuplicates.Size = new System.Drawing.Size(201, 17);
-            this.SuffixDuplicates.TabIndex = 16;
+            this.SuffixDuplicates.TabIndex = 12;
             this.SuffixDuplicates.TabStop = true;
             this.SuffixDuplicates.Text = "Suffix duplicate files with enumeration";
             this.SuffixDuplicates.UseVisualStyleBackColor = true;
@@ -213,7 +242,7 @@ namespace pFile
             this.OverwriteDuplicates.Location = new System.Drawing.Point(6, 112);
             this.OverwriteDuplicates.Name = "OverwriteDuplicates";
             this.OverwriteDuplicates.Size = new System.Drawing.Size(229, 17);
-            this.OverwriteDuplicates.TabIndex = 15;
+            this.OverwriteDuplicates.TabIndex = 11;
             this.OverwriteDuplicates.TabStop = true;
             this.OverwriteDuplicates.Text = "Overwrite duplicate files rather than rename";
             this.OverwriteDuplicates.UseVisualStyleBackColor = true;
@@ -242,7 +271,7 @@ namespace pFile
             this.FileTypeBox.Location = new System.Drawing.Point(162, 17);
             this.FileTypeBox.Name = "FileTypeBox";
             this.FileTypeBox.Size = new System.Drawing.Size(90, 20);
-            this.FileTypeBox.TabIndex = 11;
+            this.FileTypeBox.TabIndex = 6;
             this.FileTypeBox.TextChanged += new System.EventHandler(this.FileTypeBox_TextChanged);
             // 
             // RestrictFiletype
@@ -251,7 +280,7 @@ namespace pFile
             this.RestrictFiletype.Location = new System.Drawing.Point(6, 20);
             this.RestrictFiletype.Name = "RestrictFiletype";
             this.RestrictFiletype.Size = new System.Drawing.Size(110, 17);
-            this.RestrictFiletype.TabIndex = 10;
+            this.RestrictFiletype.TabIndex = 5;
             this.RestrictFiletype.Text = "Restrict to filetype";
             this.RestrictFiletype.UseVisualStyleBackColor = true;
             // 
@@ -283,41 +312,14 @@ namespace pFile
             this.PerformOperation.Location = new System.Drawing.Point(107, 436);
             this.PerformOperation.Name = "PerformOperation";
             this.PerformOperation.Size = new System.Drawing.Size(75, 23);
-            this.PerformOperation.TabIndex = 13;
+            this.PerformOperation.TabIndex = 14;
             this.PerformOperation.Text = "OK";
             this.PerformOperation.UseVisualStyleBackColor = true;
             this.PerformOperation.Click += new System.EventHandler(this.PerformOperation_Click);
             // 
-            // FolderPrefix
-            // 
-            this.FolderPrefix.AutoSize = true;
-            this.FolderPrefix.Location = new System.Drawing.Point(6, 71);
-            this.FolderPrefix.Name = "FolderPrefix";
-            this.FolderPrefix.Size = new System.Drawing.Size(132, 17);
-            this.FolderPrefix.TabIndex = 20;
-            this.FolderPrefix.Text = "Prefix with folder name";
-            this.FolderPrefix.UseVisualStyleBackColor = true;
-            // 
-            // Separator
-            // 
-            this.Separator.Location = new System.Drawing.Point(162, 69);
-            this.Separator.Name = "Separator";
-            this.Separator.Size = new System.Drawing.Size(90, 20);
-            this.Separator.TabIndex = 21;
-            this.Separator.TextChanged += new System.EventHandler(this.Separator_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label6.Location = new System.Drawing.Point(177, 89);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "(Separator)";
-            // 
             // Operation
             // 
+            this.AcceptButton = this.PerformOperation;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(299, 471);
@@ -342,7 +344,7 @@ namespace pFile
 
         #endregion
 
-        private System.Windows.Forms.ComboBox CopyMoveDropDown;
+        private System.Windows.Forms.ComboBox OperationTypeDropDown;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton FilesOnlyTop;
         private System.Windows.Forms.TrackBar DestinationPane;

@@ -117,8 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pFileFavorites" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pFileFavorites.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="Browse" xml:space="preserve">
+    <value>Opens a directory selection window. Selected directory opens in designated panel when clicked.</value>
+  </data>
+  <data name="C:/" xml:space="preserve">
+    <value>A shortcut to the C drive. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="Drives" xml:space="preserve">
+    <value>List of shortcuts populated by external drives connected to the computer. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="EditClearFavorites" xml:space="preserve">
+    <value>Clears the list of favorited directories.</value>
+  </data>
+  <data name="EditPerformOp" xml:space="preserve">
+    <value>Opens the Operation window. This can be used to Copy, Move or Rename files between panels with some additional options.</value>
+  </data>
+  <data name="EditResetDefaultStartup" xml:space="preserve">
+    <value>Resets default directories to their original values. </value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Marks a directory as "favorite" and adds it to the favorites list.</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>List of favorited directories. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="FileExit" xml:space="preserve">
+    <value>Closes pFile.</value>
+  </data>
+  <data name="FileImportConfig" xml:space="preserve">
+    <value>Loads Config from specified .pfp file. This includes default directories and the list of favorite directories.</value>
+  </data>
+  <data name="FileNewWindow" xml:space="preserve">
+    <value>Opens a new instance of pFile. Files can be dragged between windows.</value>
+  </data>
+  <data name="FileSaveConfig" xml:space="preserve">
+    <value>Saves the current Config as default. This includes default directories and the list of favorite directories.</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Navigates to directory in the designated panel's address bar. Can also be used as a refresh button if the address is not changed.</value>
+  </data>
+  <data name="HelpAbout" xml:space="preserve">
+    <value>Opens this window.</value>
+  </data>
+  <data name="LeftBack" xml:space="preserve">
+    <value>Navigates to previous directory in designated panel.</value>
+  </data>
+  <data name="OpenExplorer" xml:space="preserve">
+    <value>Opens the directory of the designated panel in a Windows File Explorer window. </value>
+  </data>
+  <data name="OpenTerminal" xml:space="preserve">
+    <value>Opens the directory of the designated panel in a command prompt.</value>
+  </data>
+  <data name="RightForward" xml:space="preserve">
+    <value>Navigates to next directory in designated panel.</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Navigates to parent directory in designated panel.</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>A shortcut to the current User folder. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="ViewAlwaysTop" xml:space="preserve">
+    <value>Keeps the pFile window on top of all other windows. </value>
+  </data>
+  <data name="ViewOrientation" xml:space="preserve">
+    <value>Specifies the Orientation of the file explorer panels. Vertical meaning the panels are on the left and right, and Horizontal meaning the panels are on the bottom and top.</value>
   </data>
 </root>

@@ -15,27 +15,39 @@ namespace pFile
 {
     public partial class Form1 : Form
     {
+
+        public Form1 Instance { get { return instance; } set { Instance = instance; } }
+        private Form1 instance;
         string Url1 { get { return webBrowser1.Url.ToString().Substring(8); } set { Url1 = value; } }
         string Url2 { get { return webBrowser2.Url.ToString().Substring(8); } set { Url2 = value; } }
-
-        public ResourceManager ResManager { get; private set; }
-
-        List<string> favorites;
-        string favoritesFile = "../pFileFavorites.txt";
 
         public Form1()
         {
             InitializeComponent();
+            instance = this;
+            new Prefs();
+            if (Prefs.Instance.InitializePrefsFile(Panel1Url.Text, Panel2Url.Text, false))
+            {
+                Panel1Url.Text = Prefs.Instance.preferences[0];
+                Panel2Url.Text = Prefs.Instance.preferences[1];
+                Go(webBrowser1, Panel1Url.Text);
+                Go(webBrowser2, Panel2Url.Text);
+            }
             GetDrives();
             GetFavorites();
-            Panel1Url.Text = Url1;
-            Panel2Url.Text = Url2;
+            SetFavoritesButtonDisplayStyle();
+            OrientationDropdown.SelectedIndex = 1;  //set to vertical split by default
             webBrowser1.CanGoBackChanged += EnablePanel1Back;
             webBrowser2.CanGoBackChanged += EnablePanel2Back;
             webBrowser1.CanGoForwardChanged += EnablePanel1Forward;
             webBrowser2.CanGoForwardChanged += EnablePanel2Forward;
             saveFileDialog1.FileOk += SaveFile;
-            openFileDialog1.FileOk += OpenFile;
+            openFileDialog1.FileOk += ImportFile;
+        }
+
+        private void GetPrefs()
+        {
+
         }
 
         private void GetDrives()
@@ -51,16 +63,27 @@ namespace pFile
 
         private void GetFavorites()
         {
-            favorites = new List<String>();
-            if (!File.Exists(favoritesFile))
+            Prefs.Instance.favorites = new List<string>();
+
+            bool tryagain = true;
+            do
             {
-                File.Create(favoritesFile);
-                favorites.Add(Panel1Url.Text);
-                favorites.Add(Panel2Url.Text);
-                File.WriteAllLines(favoritesFile, favorites);
-            }
-            favorites = File.ReadAllLines(favoritesFile).ToList();
-            foreach (string fav in favorites)
+                try
+                {
+                    List<string> prefs = File.ReadAllLines(Prefs.Instance.prefsFile).ToList();
+                    string[] favs = prefs[0].Split(',');
+                    if (!favs.Contains(""))
+                    {
+                        Prefs.Instance.favorites = favs.ToList();
+                    }
+                    tryagain = false;
+                }
+                catch (Exception ex)
+                {
+                    //try again
+                }
+            } while (tryagain);
+            foreach (string fav in Prefs.Instance.favorites)
             {
                 ToolStripItem newItem1 = Panel1Favorites.DropDownItems.Add(fav);
                 newItem1.Click += Panel1NavigateTo;
@@ -178,14 +201,18 @@ namespace pFile
 
         private void Panel1Go_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(Panel1Url.Text))
-                webBrowser1.Url = new Uri(Panel1Url.Text);
+            Go(webBrowser1, Panel1Url.Text);
         }
 
         private void Panel2Go_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(Panel2Url.Text))
-                webBrowser2.Url = new Uri(Panel2Url.Text);
+            Go(webBrowser2, Panel2Url.Text);
+        }
+
+        private void Go(WebBrowser browser, string url)
+        {
+            if (Directory.Exists(url))
+                browser.Url = new Uri(url);
         }
 
         private void Panel1Up_Click(object sender, EventArgs e)
@@ -229,7 +256,10 @@ namespace pFile
 
         private void saveSessionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
+            Prefs.Instance.preferences.Clear();
+            Prefs.Instance.preferences.Add(Url1);
+            Prefs.Instance.preferences.Add(Url2);
+            Prefs.Instance.WritePrefsFile();
         }
 
         private void SaveFile(object sender, EventArgs e)
@@ -243,11 +273,15 @@ namespace pFile
             openFileDialog1.ShowDialog();
         }
 
-        private void OpenFile(object sender, EventArgs e)
+        private void ImportFile(object sender, EventArgs e)
         {
-            string[] urls = File.ReadAllLines(openFileDialog1.FileName);
-            webBrowser1.Url = new Uri(urls[0]);
-            webBrowser2.Url = new Uri(urls[1]);
+            if (Path.GetExtension(openFileDialog1.FileName) != ".prefs")
+            {
+                return;
+            }
+            Prefs.Instance.ImportPrefsFile(openFileDialog1.FileName);
+            webBrowser1.Url = new Uri(Prefs.Instance.preferences[0]);
+            webBrowser2.Url = new Uri(Prefs.Instance.preferences[1]);
         }
 
         private void Panel1Favorite_Click(object sender, EventArgs e)
@@ -276,7 +310,7 @@ namespace pFile
 
         private void SetFavoritesButtonDisplayStyle()
         {
-            if (favorites.Contains(Url1))
+            if (Prefs.Instance.favorites.Contains(Url1))
             {
                 Panel1Favorite.FlatStyle = FlatStyle.Flat;
             }
@@ -285,7 +319,7 @@ namespace pFile
                 Panel1Favorite.FlatStyle = FlatStyle.Standard;
             }
 
-            if (favorites.Contains(Url2))
+            if (Prefs.Instance.favorites.Contains(Url2))
             {
                 Panel2Favorite.FlatStyle = FlatStyle.Flat;
             }
@@ -297,24 +331,23 @@ namespace pFile
 
         private void AddFavorite(string url)
         {
-            favorites.Add(url);
-            File.WriteAllLines(favoritesFile, favorites);
-
+            Prefs.Instance.favorites.Add(url);
             ToolStripItem newItem1 = Panel1Favorites.DropDownItems.Add(url);
             newItem1.Click += Panel1NavigateTo;
             ToolStripItem newItem2 = Panel2Favorites.DropDownItems.Add(url);
             newItem2.Click += Panel2NavigateTo;
             SetFavoritesButtonDisplayStyle();
+            Prefs.Instance.WritePrefsFile();
         }
 
         private void RemoveFavorite(string url)
         {
-            int index = favorites.IndexOf(url);
-            favorites.Remove(url);
-            File.WriteAllLines(favoritesFile, favorites);
+            int index = Prefs.Instance.favorites.IndexOf(url);
+            Prefs.Instance.favorites.Remove(url);
             Panel1Favorites.DropDownItems.RemoveAt(index);
             Panel2Favorites.DropDownItems.RemoveAt(index);
             SetFavoritesButtonDisplayStyle();
+            Prefs.Instance.WritePrefsFile();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -327,6 +360,42 @@ namespace pFile
         {
             Operation operation = new Operation(Panel1Url.Text, Panel2Url.Text);
             operation.Show();
+        }
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("pFile.exe");
+        }
+
+        private void OrientationDropdown_DropDownClosed(object sender, EventArgs e)
+        {
+            splitContainer1.Orientation = (Orientation)OrientationDropdown.SelectedIndex;
+            if (splitContainer1.Orientation == Orientation.Vertical)
+            {
+                splitContainer1.SplitterDistance = splitContainer1.Width / 2;
+            }
+            else
+            {
+                splitContainer1.SplitterDistance = splitContainer1.Height / 2;
+            }
+        }
+
+        private void resetToDefaultSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Prefs.Instance.preferences.Clear();
+            Prefs.Instance.InitializePrefsFile("C:/", "C:/Users", true);
+            Panel1Url.Text = Prefs.Instance.preferences[0];
+            Panel2Url.Text = Prefs.Instance.preferences[1];
+            Go(webBrowser1, Panel1Url.Text);
+            Go(webBrowser2, Panel2Url.Text);
+        }
+
+        private void clearFavoritesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while (Prefs.Instance.favorites.Count > 0)
+            {
+                RemoveFavorite(Prefs.Instance.favorites[0]);
+            }
         }
     }
 }

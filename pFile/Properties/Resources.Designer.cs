@@ -61,14 +61,200 @@ namespace pFile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:/Airship/RuinedKing/Builds/XSX
-        ///C:/Users/Preston/Videos/Localization
-        ///C:/Users/Preston/Videos/Captures
-        ///.
+        ///   Looks up a localized string similar to Opens a directory selection window. Selected directory opens in designated panel when clicked..
         /// </summary>
-        public static string pFileFavorites {
+        public static string Browse {
             get {
-                return ResourceManager.GetString("pFileFavorites", resourceCulture);
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A shortcut to the C drive. Opens in designated panel when clicked..
+        /// </summary>
+        public static string C__ {
+            get {
+                return ResourceManager.GetString("C:/", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of shortcuts populated by external drives connected to the computer. Opens in designated panel when clicked..
+        /// </summary>
+        public static string Drives {
+            get {
+                return ResourceManager.GetString("Drives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clears the list of favorited directories..
+        /// </summary>
+        public static string EditClearFavorites {
+            get {
+                return ResourceManager.GetString("EditClearFavorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the Operation window. This can be used to Copy, Move or Rename files between panels with some additional options..
+        /// </summary>
+        public static string EditPerformOp {
+            get {
+                return ResourceManager.GetString("EditPerformOp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resets default directories to their original values. .
+        /// </summary>
+        public static string EditResetDefaultStartup {
+            get {
+                return ResourceManager.GetString("EditResetDefaultStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marks a directory as &quot;favorite&quot; and adds it to the favorites list..
+        /// </summary>
+        public static string Favorite {
+            get {
+                return ResourceManager.GetString("Favorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of favorited directories. Opens in designated panel when clicked..
+        /// </summary>
+        public static string Favorites {
+            get {
+                return ResourceManager.GetString("Favorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closes pFile..
+        /// </summary>
+        public static string FileExit {
+            get {
+                return ResourceManager.GetString("FileExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loads Config from specified .pfp file. This includes default directories and the list of favorite directories..
+        /// </summary>
+        public static string FileImportConfig {
+            get {
+                return ResourceManager.GetString("FileImportConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens a new instance of pFile. Files can be dragged between windows..
+        /// </summary>
+        public static string FileNewWindow {
+            get {
+                return ResourceManager.GetString("FileNewWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saves the current Config as default. This includes default directories and the list of favorite directories..
+        /// </summary>
+        public static string FileSaveConfig {
+            get {
+                return ResourceManager.GetString("FileSaveConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigates to directory in the designated panel&apos;s address bar. Can also be used as a refresh button if the address is not changed..
+        /// </summary>
+        public static string Go {
+            get {
+                return ResourceManager.GetString("Go", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens this window..
+        /// </summary>
+        public static string HelpAbout {
+            get {
+                return ResourceManager.GetString("HelpAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigates to previous directory in designated panel..
+        /// </summary>
+        public static string LeftBack {
+            get {
+                return ResourceManager.GetString("LeftBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the directory of the designated panel in a Windows File Explorer window. .
+        /// </summary>
+        public static string OpenExplorer {
+            get {
+                return ResourceManager.GetString("OpenExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opens the directory of the designated panel in a command prompt..
+        /// </summary>
+        public static string OpenTerminal {
+            get {
+                return ResourceManager.GetString("OpenTerminal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigates to next directory in designated panel..
+        /// </summary>
+        public static string RightForward {
+            get {
+                return ResourceManager.GetString("RightForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigates to parent directory in designated panel..
+        /// </summary>
+        public static string Up {
+            get {
+                return ResourceManager.GetString("Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A shortcut to the current User folder. Opens in designated panel when clicked..
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keeps the pFile window on top of all other windows. .
+        /// </summary>
+        public static string ViewAlwaysTop {
+            get {
+                return ResourceManager.GetString("ViewAlwaysTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the Orientation of the file explorer panels. Vertical meaning the panels are on the left and right, and Horizontal meaning the panels are on the bottom and top..
+        /// </summary>
+        public static string ViewOrientation {
+            get {
+                return ResourceManager.GetString("ViewOrientation", resourceCulture);
             }
         }
     }
