@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,9 +46,35 @@ namespace pFile
             openFileDialog1.FileOk += ImportFile;
         }
 
-        private void GetPrefs()
+        private void InitializeBrowsers()
         {
+            //var th1 = new Thread(() => {
+            //    WebBrowser temp = CopyBrowser(webBrowser1);
+            //    //webBrowser1.Dispose();
+            //    temp.TabIndex = 0;
+            //    Browser1Panel.Controls.Add(temp);
+            //    Application.Run();
+            //});
+            //th1.SetApartmentState(ApartmentState.STA);
+            //th1.Start();
 
+            //var th2 = new Thread(() => {
+            //    WebBrowser temp = CopyBrowser(webBrowser2);
+            //    //webBrowser2.Dispose();
+            //    temp.TabIndex = 1;
+            //    Browser1Panel.Controls.Add(webBrowser2);
+            //    Application.Run();
+            //});
+            //th2.SetApartmentState(ApartmentState.STA);
+            //th2.Start();
+        }
+
+        private WebBrowser CopyBrowser(WebBrowser toCopy)
+        {
+            WebBrowser temp = new WebBrowser();
+            temp.Dock = toCopy.Dock;
+            temp.Url = toCopy.Url;
+            return temp;
         }
 
         private void GetDrives()
@@ -396,6 +423,22 @@ namespace pFile
             {
                 RemoveFavorite(Prefs.Instance.favorites[0]);
             }
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("pFileUpdateRepair.exe");
+            Application.Exit();
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void webBrowser2_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
         }
     }
 }

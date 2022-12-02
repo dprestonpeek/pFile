@@ -40,12 +40,17 @@ namespace pFile
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.performOperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.resetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToDefaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearFavoritesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelOrientationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrientationDropdown = new System.Windows.Forms.ToolStripComboBox();
             this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hElpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -84,10 +89,8 @@ namespace pFile
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.resetConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetToDefaultSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearFavoritesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Browser1Panel = new System.Windows.Forms.Panel();
+            this.Browser2Panel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -97,6 +100,8 @@ namespace pFile
             this.menuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
+            this.Browser1Panel.SuspendLayout();
+            this.Browser2Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -128,38 +133,38 @@ namespace pFile
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.newWindowToolStripMenuItem.Text = "New Window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(198, 6);
             // 
             // openSessionToolStripMenuItem
             // 
             this.openSessionToolStripMenuItem.Name = "openSessionToolStripMenuItem";
-            this.openSessionToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.openSessionToolStripMenuItem.Text = "Import Config";
+            this.openSessionToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.openSessionToolStripMenuItem.Text = "Import Config...";
             this.openSessionToolStripMenuItem.Click += new System.EventHandler(this.openSessionToolStripMenuItem_Click);
             // 
             // saveSessionToolStripMenuItem
             // 
             this.saveSessionToolStripMenuItem.Name = "saveSessionToolStripMenuItem";
-            this.saveSessionToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.saveSessionToolStripMenuItem.Text = "Save Config as Default";
+            this.saveSessionToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.saveSessionToolStripMenuItem.Text = "Save Config as Default...";
             this.saveSessionToolStripMenuItem.Click += new System.EventHandler(this.saveSessionToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(189, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(198, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -176,9 +181,37 @@ namespace pFile
             // performOperationToolStripMenuItem
             // 
             this.performOperationToolStripMenuItem.Name = "performOperationToolStripMenuItem";
-            this.performOperationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.performOperationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.performOperationToolStripMenuItem.Text = "Perform Operation";
             this.performOperationToolStripMenuItem.Click += new System.EventHandler(this.performOperationToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(170, 6);
+            // 
+            // resetConfigToolStripMenuItem
+            // 
+            this.resetConfigToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resetToDefaultSettingsToolStripMenuItem,
+            this.clearFavoritesListToolStripMenuItem});
+            this.resetConfigToolStripMenuItem.Name = "resetConfigToolStripMenuItem";
+            this.resetConfigToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.resetConfigToolStripMenuItem.Text = "Reset Config...";
+            // 
+            // resetToDefaultSettingsToolStripMenuItem
+            // 
+            this.resetToDefaultSettingsToolStripMenuItem.Name = "resetToDefaultSettingsToolStripMenuItem";
+            this.resetToDefaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.resetToDefaultSettingsToolStripMenuItem.Text = "Reset Default Startup Locations";
+            this.resetToDefaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetToDefaultSettingsToolStripMenuItem_Click);
+            // 
+            // clearFavoritesListToolStripMenuItem
+            // 
+            this.clearFavoritesListToolStripMenuItem.Name = "clearFavoritesListToolStripMenuItem";
+            this.clearFavoritesListToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.clearFavoritesListToolStripMenuItem.Text = "Clear Favorites List";
+            this.clearFavoritesListToolStripMenuItem.Click += new System.EventHandler(this.clearFavoritesListToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem2
             // 
@@ -194,7 +227,7 @@ namespace pFile
             this.panelOrientationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OrientationDropdown});
             this.panelOrientationToolStripMenuItem.Name = "panelOrientationToolStripMenuItem";
-            this.panelOrientationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.panelOrientationToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.panelOrientationToolStripMenuItem.Text = "Panel Orientation";
             // 
             // OrientationDropdown
@@ -211,13 +244,14 @@ namespace pFile
             // 
             this.alwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.alwaysOnTopToolStripMenuItem.Name = "alwaysOnTopToolStripMenuItem";
-            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.alwaysOnTopToolStripMenuItem.Text = "Always On Top";
             // 
             // hElpToolStripMenuItem
             // 
             this.hElpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.checkForUpdatesToolStripMenuItem});
             this.hElpToolStripMenuItem.Name = "hElpToolStripMenuItem";
             this.hElpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hElpToolStripMenuItem.Text = "Help";
@@ -229,6 +263,13 @@ namespace pFile
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates...";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -237,14 +278,14 @@ namespace pFile
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.webBrowser1);
+            this.splitContainer1.Panel1.Controls.Add(this.Browser1Panel);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.Controls.Add(this.menuStrip2);
             this.splitContainer1.Panel1MinSize = 10;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.webBrowser2);
+            this.splitContainer1.Panel2.Controls.Add(this.Browser2Panel);
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.menuStrip3);
             this.splitContainer1.Panel2MinSize = 10;
@@ -255,12 +296,13 @@ namespace pFile
             // webBrowser1
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 75);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(402, 393);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Url = new System.Uri("C:\\", System.UriKind.Absolute);
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
             // 
             // panel1
@@ -374,7 +416,7 @@ namespace pFile
             this.Panel1Url.Location = new System.Drawing.Point(87, 3);
             this.Panel1Url.Name = "Panel1Url";
             this.Panel1Url.Size = new System.Drawing.Size(312, 20);
-            this.Panel1Url.TabIndex = 1;
+            this.Panel1Url.TabIndex = 2;
             this.Panel1Url.Text = "C:/";
             // 
             // menuStrip2
@@ -425,12 +467,13 @@ namespace pFile
             // webBrowser2
             // 
             this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 75);
+            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
             this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.Size = new System.Drawing.Size(399, 393);
-            this.webBrowser2.TabIndex = 2;
+            this.webBrowser2.TabIndex = 1;
             this.webBrowser2.Url = new System.Uri("C:\\Users", System.UriKind.Absolute);
+            this.webBrowser2.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser2_DocumentCompleted);
             this.webBrowser2.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser2_Navigated);
             // 
             // panel2
@@ -604,33 +647,23 @@ namespace pFile
             this.openFileDialog1.FileName = "myPfile.pfp";
             this.openFileDialog1.Title = "Open pFile Session...";
             // 
-            // toolStripSeparator3
+            // Browser1Panel
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.Browser1Panel.Controls.Add(this.webBrowser1);
+            this.Browser1Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Browser1Panel.Location = new System.Drawing.Point(0, 75);
+            this.Browser1Panel.Name = "Browser1Panel";
+            this.Browser1Panel.Size = new System.Drawing.Size(402, 393);
+            this.Browser1Panel.TabIndex = 2;
             // 
-            // resetConfigToolStripMenuItem
+            // Browser2Panel
             // 
-            this.resetConfigToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resetToDefaultSettingsToolStripMenuItem,
-            this.clearFavoritesListToolStripMenuItem});
-            this.resetConfigToolStripMenuItem.Name = "resetConfigToolStripMenuItem";
-            this.resetConfigToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.resetConfigToolStripMenuItem.Text = "Reset Config";
-            // 
-            // resetToDefaultSettingsToolStripMenuItem
-            // 
-            this.resetToDefaultSettingsToolStripMenuItem.Name = "resetToDefaultSettingsToolStripMenuItem";
-            this.resetToDefaultSettingsToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.resetToDefaultSettingsToolStripMenuItem.Text = "Reset Default Startup Locations";
-            this.resetToDefaultSettingsToolStripMenuItem.Click += new System.EventHandler(this.resetToDefaultSettingsToolStripMenuItem_Click);
-            // 
-            // clearFavoritesListToolStripMenuItem
-            // 
-            this.clearFavoritesListToolStripMenuItem.Name = "clearFavoritesListToolStripMenuItem";
-            this.clearFavoritesListToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.clearFavoritesListToolStripMenuItem.Text = "Clear Favorites List";
-            this.clearFavoritesListToolStripMenuItem.Click += new System.EventHandler(this.clearFavoritesListToolStripMenuItem_Click);
+            this.Browser2Panel.Controls.Add(this.webBrowser2);
+            this.Browser2Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Browser2Panel.Location = new System.Drawing.Point(0, 75);
+            this.Browser2Panel.Name = "Browser2Panel";
+            this.Browser2Panel.Size = new System.Drawing.Size(399, 393);
+            this.Browser2Panel.TabIndex = 4;
             // 
             // Form1
             // 
@@ -659,6 +692,8 @@ namespace pFile
             this.panel2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
+            this.Browser1Panel.ResumeLayout(false);
+            this.Browser2Panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -724,6 +759,9 @@ namespace pFile
         private System.Windows.Forms.ToolStripMenuItem resetConfigToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetToDefaultSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearFavoritesListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.Panel Browser1Panel;
+        private System.Windows.Forms.Panel Browser2Panel;
     }
 }
 
